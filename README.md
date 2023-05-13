@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @samyak1729 
 - ☮️ I'm a coding newbie 
 - 👀 I’m interested in artificial intelligence, blockchains and the new technologies that keep coming up
-- 🌱 I’m currently learning C language as a part of college curriculum 
+- 🌱 I’m currently learning front-end developement 
 - 💞️ I’m looking to collaborate on ai technologies in the future 
 - 📫 Feel free to contact me on discord samyak #1930
 
