@@ -1,5 +1,4 @@
-learning and building
-
+learning to train neural networks
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
 <!---
