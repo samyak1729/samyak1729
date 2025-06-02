@@ -1,4 +1,5 @@
-learning to train neural networks
+wanna be worlds greatest applied ai engineer
+
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
 <!---
