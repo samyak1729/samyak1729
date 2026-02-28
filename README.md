@@ -4,7 +4,7 @@ And I skipped on Spring Internships to contribute to Open Source. I couldnt get 
 
 So I practiced free will and decided to all in contribute to libraries and projects i use. Goal is to be top in 10% of all Applied AI Engineers in next few months
 
-In past I have made a few contriutions to [ChonkieAI](https://github.com/chonkie-inc/chonkie) and [Mirascoper](https://github.com/Mirascope/mirascope).. Currently I am exploring [Opentelemetry for Python](https://github.com/open-telemetry/opentelemetry-python)
+In past I have made a few contriutions to [ChonkieAI](https://github.com/chonkie-inc/chonkie) and [Mirascoper](https://github.com/Mirascope/mirascope). Currently I am exploring [Opentelemetry for Python](https://github.com/open-telemetry/opentelemetry-python)
 
 I am agressively looking for remote roles in Applied AI /Generative AI/ RAG
 
