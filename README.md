@@ -4,7 +4,7 @@ And I skipped on Spring Internships to contribute to Open Source.
 
 In past I have made a few contriutions to 
 1. [ChonkieAI](https://github.com/chonkie-inc/chonkie)  
-2. [Mirascoper](https://github.com/Mirascope/mirascope). C
+2. [Mirascoper](https://github.com/Mirascope/mirascope). 
 
 Currently I am exploring 
 1. [Opentelemetry for Python](https://github.com/open-telemetry/opentelemetry-python)
