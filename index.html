@@ -1,196 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Samyak Bharsakle: Personal Website</title>
-  <link href="https://unpkg.com/lucide@latest/dist/lu.min.css" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #111111;
-      --link-color: #111111;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samyak Bharsakle — DevRel · Builder · Podcast Host</title>
+<meta name="description" content="Samyak Bharsakle — aspiring DevRel, deeptech podcast host, AI tinkerer, and community builder. Let's talk."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --surface: #141416;
+    --surface2: #1c1c20;
+    --border: #27272a;
+    --accent: #6ee7b7;
+    --accent-dim: rgba(110,231,183,0.12);
+    --cta: #f97316;
+    --cta-hover: #fb923c;
+    --text: #f4f4f5;
+    --text2: #d4d4d8;
+    --muted: #71717a;
+    --radius: 12px;
+  }
 
-    body.dark {
-      --bg-color: #111111;
-      --text-color: #f5f5f5;
-      --link-color: #bbbbbb;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Lucida Console', monospace;
-      font-size: 18px;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 50px;
-      box-sizing: border-box;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+  body {
+    background: var(--bg);
+    color: var(--text2);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    a {
-      color: var(--link-color) !important;
-      text-decoration: none;
-    }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+  a:hover { opacity: 0.8; }
 
-    .landing {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      position: relative;
-    }
+  .wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-color);
-    }
+  /* ── CTA Banner ── */
+  .top-banner {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
 
-    .theme-toggle svg {
-      width: 24px;
-      height: 24px;
-    }
+  .top-banner a {
+    color: var(--cta);
+    font-weight: 600;
+  }
 
-    .svg-container {
-      width: 100%;
-      max-width: 400px;
-      display: inline-block;
-    }
+  /* ── Hero ── */
+  .hero {
+    padding: 5rem 0 3rem;
+  }
 
-    .svg-container svg text {
-      fill: currentColor;
-    }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-    .separator {
-      letter-spacing: -9px;
-    }
+  .hero-eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
 
-    hr {
-      border: none;
-      height: 2px;
-      background-color: lightgrey;
-      width: 100%;
-      margin: 30px auto;
-    }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
 
-    .links-container {
-      font-size: 24px;
-      margin: 20px;
-    }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
 
-    .links-container a {
-      margin: 0 10px;
-    }
+  .hero-intro {
+    font-size: 1.1rem;
+    color: var(--text2);
+    max-width: 580px;
+    margin-bottom: 2rem;
+  }
 
-    .product-photo {
-      display: block;
-      max-width: 640px;
-      width: 100%;
-      margin: 0 auto;
-    }
+  .hero-intro strong {
+    color: var(--text);
+  }
 
-    .faqtable dt {
-      margin-bottom: 0.75em;
-      font-style: italic;
-    }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
 
-    .faqtable dd {
-      margin-left: 0;
-      margin-bottom: 2em;
-    }
-  </style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    opacity: 1;
+  }
+
+  .btn-primary {
+    background: var(--cta);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(249,115,22,0.25);
+  }
+
+  .btn-primary:hover {
+    background: var(--cta-hover);
+    box-shadow: 0 0 30px rgba(249,115,22,0.35);
+  }
+
+  .btn-secondary {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+  }
+
+  .social-row {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .social-row a {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .social-row a:hover {
+    color: var(--text);
+    opacity: 1;
+  }
+
+  /* ── Section ── */
+  section {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Story section ── */
+  .story p {
+    margin-bottom: 1rem;
+  }
+
+  .story .highlight-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(110,231,183,0.2);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    color: var(--text2);
+  }
+
+  .story .highlight-box strong {
+    color: var(--accent);
+  }
+
+  /* ── Card grid ── */
+  .card-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(110,231,183,0.4);
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Blog list ── */
+  .blog-list {
+    list-style: none;
+  }
+
+  .blog-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .blog-list li:last-child {
+    border-bottom: none;
+  }
+
+  .blog-list a {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+
+  .blog-list a:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  .blog-list .blog-tag {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  /* ── Podcast / Sponsor box ── */
+  .sponsor-box {
+    background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-top: 1rem;
+  }
+
+  .sponsor-box h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .sponsor-box p {
+    font-size: 0.9rem;
+    color: var(--text2);
+    margin-bottom: 1rem;
+  }
+
+  .sponsor-box ul {
+    list-style: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .sponsor-box li {
+    font-size: 0.88rem;
+    color: var(--text2);
+    padding: 0.25rem 0;
+  }
+
+  .sponsor-box li::before {
+    content: '✦ ';
+    color: var(--cta);
+  }
+
+  /* ── Why DevRel ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .why-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+  }
+
+  .why-item .emoji {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item .why-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .why-item .why-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  footer a:hover { color: var(--text); }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, section {
+    animation: fadeIn 0.5s ease both;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .wrapper { padding: 0 1.25rem; }
+    .hero { padding-top: 3.5rem; }
+    .cta-row { flex-direction: column; }
+    .btn { justify-content: center; }
+    .blog-list li { flex-direction: column; gap: 0.15rem; }
+  }
+</style>
 </head>
 <body>
-  <div class="landing">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-      </svg>
-    </button>
 
-    <div class="svg-container">
-      <svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="35" font-family="'Lucida Console', monospace" font-size="28" font-weight="bold" fill="currentColor">
-          &gt;&gt; samyak
-        </text>
-      </svg>
+<div class="top-banner">
+  🎯 actively looking for devrel roles — <a href="https://cal.com/samyakb/30min">let's chat →</a>
+</div>
+
+<div class="wrapper">
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-eyebrow">open to opportunities</div>
+
+  <h1>hey, i'm samyak 👋</h1>
+
+  <p class="hero-intro">
+    i love <strong>devtools, applied AI, and communities</strong>.
+    i'm looking for a <strong>devrel role</strong> where i can build in public, write technical content, and help developers win. i don't have all the answers — but i've got the curiosity, the hustle, and the fundamentals.
+  </p>
+
+  <div class="cta-row">
+    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">📞 book a call</a>
+    <a href="https://github.com/samyak1729" class="btn btn-secondary" target="_blank">github</a>
+    <a href="https://www.linkedin.com/in/samyak-bharsakle-15ba88292" class="btn btn-secondary" target="_blank">linkedin</a>
+  </div>
+
+  <div class="social-row">
+    <a href="https://x.com/samyak1729" target="_blank">twitter / x</a>
+    <a href="mailto:samyak5jan@gmail.com">samyak5jan@gmail.com</a>
+  </div>
+</header>
+
+<!-- ══ MY STORY ══ -->
+<section class="story">
+  <div class="section-label">// the honest version</div>
+  <h2>why devrel?</h2>
+
+  <p>
+    in college i led and was part of multiple technical clubs. i tried to start a biotech research lab — failed miserably. tried running an AI agency — realized it wasn't for me. started a deeptech podcast to talk to founders building the future.
+  </p>
+
+  <p>
+    along the way i kept doing the same things: writing technical blogs, building projects to understand how things work, creating resources for other developers, and getting people excited about technical ideas.
+  </p>
+
+  <div class="highlight-box">
+    looking back… <strong>isn't this what a devrel does?</strong><br/>
+    i've got a lot to learn, but i think the fundamentals are right.
+  </div>
+
+  <p>
+    if you're looking for a devrel — or even if you aren't — i might be a good fit. let's talk.
+  </p>
+</section>
+
+<!-- ══ WHAT I BRING ══ -->
+<section>
+  <div class="section-label">// what i bring to the table</div>
+  <h2>the devrel toolkit</h2>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="emoji">✍️</div>
+      <div class="why-title">technical writing</div>
+      <div class="why-desc">blog series on RAG, AI agents, deep research — breaking down complex topics for developers</div>
     </div>
+    <div class="why-item">
+      <div class="emoji">🎙️</div>
+      <div class="why-title">podcast & content</div>
+      <div class="why-desc">hosting a deeptech podcast, creating content for the next generation of founders</div>
+    </div>
+    <div class="why-item">
+      <div class="emoji">🛠️</div>
+      <div class="why-title">building things</div>
+      <div class="why-desc">RAG agents, deep research tools, SQL agents — learning by building from scratch</div>
+    </div>
+    <div class="why-item">
+      <div class="emoji">👥</div>
+      <div class="why-title">community</div>
+      <div class="why-desc">led multiple college tech clubs, love bringing developers together around ideas</div>
+    </div>
+    <div class="why-item">
+      <div class="emoji">📦</div>
+      <div class="why-title">open source</div>
+      <div class="why-desc">contributed to ChonkieAI, Mirascope. exploring OpenTelemetry for Python</div>
+    </div>
+    <div class="why-item">
+      <div class="emoji">🧠</div>
+      <div class="why-title">always learning</div>
+      <div class="why-desc">i don't pretend to know it all — i learn in public and share what i find</div>
+    </div>
+  </div>
+</section>
 
-    <div class="links-container">
-      <a href="#intro">home</a><span class="separator">|</span>
-      <a href="#about">about me</a><span class="separator">|</span>
-      <a href="#projects">projects</a><span class="separator">|</span>
-      <a href="#blog">blog</a><span class="separator">|</span>
-      <a href="#contact">contact</a><span class="separator">|</span>
-      <a href="#fund">fund</a>
+<!-- ══ PROJECTS ══ -->
+<section>
+  <div class="section-label">// things i've built</div>
+  <h2>projects</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">🔬 deep research agent <span class="tag">ai</span></div>
+      <div class="card-desc">automated deep research pipeline using LLMs</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📚 RAG agent <span class="tag">rag</span></div>
+      <div class="card-desc">retrieval-augmented generation from scratch</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗃️ SQL agent <span class="tag">ai</span></div>
+      <div class="card-desc">natural language to SQL query agent</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🧑‍💼 founder RAG <span class="tag">rag</span></div>
+      <div class="card-desc">RAG system tailored for founder knowledge bases</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏢 enterprise documentation RAG <span class="tag">rag</span></div>
+      <div class="card-desc">production-style RAG for enterprise docs</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔀 git from scratch <span class="tag">python</span></div>
+      <div class="card-desc">reimplemented git internals in python to understand how it works</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📰 AI content curation <span class="tag">vibecoded</span></div>
+      <div class="card-desc">AI-powered content curation tool</div>
     </div>
   </div>
 
-  <hr>
-  <h2 id="intro">welcome</h2>
-  <p>i'm <strong>samyak</strong>. 21. cs undergrad. currently working on building agentic systems. experimenting with how companies — tech and non-tech — can use agents to reduce operational overhead. also involved in a research project on early parkinson’s detection (paused for now).</p>
+  <h3 style="font-size: 1rem; color: var(--muted); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 500;">mini projects</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">📦 inventory management system <span class="tag">fastapi</span></div>
+      <div class="card-desc">backend system built with FastAPI</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🌐 frontend projects <span class="tag">web</span></div>
+      <div class="card-desc">multiple frontend builds from freshman year</div>
+    </div>
+  </div>
+</section>
 
-  <hr>
-  <h2 id="about">about me</h2>
-  <p>interested in agents, preventive healthcare, and figuring out how to apply both. spend time testing ideas, exploring random topics with notebooklm, and watching anime. mostly trying to find problems worth solving.</p>
+<!-- ══ GITHUB RESOURCES ══ -->
+<section>
+  <div class="section-label">// learning resources i've created</div>
+  <h2>github resources</h2>
 
-  <hr>
-  <h2 id="projects">projects</h2>
-  <p>Here’s a list of current and upcoming work:</p>
-  <ul>
-    <li><strong><a href="https://github.com/samyak1729/deep-research">deep research from scratch</a></strong> (ongoing)
-      <ul>
-        <li>rough implementation of deep research as seen in chatgpt, grok, gemini, etc</li>
-        <li>makes use of gemini 1.5 flash and tavily for websearch</li>
-      </ul>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">🧬 genAI from first principles</div>
+      <div class="card-desc">a resource for learning generative AI fundamentals from the ground up</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔧 backend from scratch</div>
+      <div class="card-desc">learning backend development by building everything from scratch</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOGS ══ -->
+<section>
+  <div class="section-label">// writing</div>
+  <h2>blogs & technical writing</h2>
+
+  <ul class="blog-list">
+    <li>
+      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-1-Building-Ingestion-and-Chunking-from-Scratch-1bfd0f70812080dc9063f9ba51d70df9" target="_blank">RAG from scratch — part 1: ingestion & chunking</a>
+      <span class="blog-tag">series</span>
     </li>
-    <li><strong>chatbot with tool call</strong>
-      <ul>
-        <li>Currently undergoing updates. The bot integrates with external tools to enhance user interaction.</li>
-      </ul>
+    <li>
+      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-2-Adding-Embeddings-and-a-Vector-Store-with-Cohere-and-Pinecone-1d2d0f70812080f09258e1cf78e335f2" target="_blank">RAG from scratch — part 2: embeddings + vector store</a>
+      <span class="blog-tag">series</span>
     </li>
-  </ul>
-  <p>future ideas:</p>
-  <ul>
-    <li><strong>browser agent from scratch</strong></li>
-    <li><strong>toy Agentic framework</strong></li>
-  </ul>
-
-  <hr>
-  <h2 id="blog">blog</h2>
-  <p>writings on building agents, research experiments, and whatever’s currently breaking.</p>
-  <ul>
-    <li><strong>RAG for Beginners (3-part series)</strong>
-      <ul>
-        <li><a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-1-Building-Ingestion-and-Chunking-from-Scratch-1bfd0f70812080dc9063f9ba51d70df9">part 1</a> – building ingestion and chunking from scratch.</li>
-        <li><a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-2-Adding-Embeddings-and-a-Vector-Store-with-Cohere-and-Pinecone-1d2d0f70812080f09258e1cf78e335f2">part 2</a> – adding embeddings + vector store with cohere + pinecone.</li>
-        <li><a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-3-Adding-an-LLM-with-Gemini-2-0-Flash-1d2d0f70812080e5b199f79fa16bb712">part 3</a> – querying with gemini 2.0 flash.</li>
-      </ul>
+    <li>
+      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-3-Adding-an-LLM-with-Gemini-2-0-Flash-1d2d0f70812080e5b199f79fa16bb712" target="_blank">RAG from scratch — part 3: querying with Gemini</a>
+      <span class="blog-tag">series</span>
     </li>
-    <li><strong>deep research from scratch</strong> – coming soon.</li>
+    <li><span style="color: var(--text)">asha AI blog series</span><span class="blog-tag">series</span></li>
+    <li><span style="color: var(--text)">deep research — how it works</span><span class="blog-tag">ai</span></li>
+    <li><span style="color: var(--text)">list mutation in python</span><span class="blog-tag">fundamentals</span></li>
+    <li><span style="color: var(--text)">uv package manager</span><span class="blog-tag">fundamentals</span></li>
+    <li><span style="color: var(--text)">reading open source codebases</span><span class="blog-tag">fundamentals</span></li>
+    <li><span style="color: var(--text)">firecrawl: LLM-ready data</span><span class="blog-tag">tools</span></li>
+    <li><span style="color: var(--text)">n8n workflow automation</span><span class="blog-tag">tools</span></li>
+    <li><span style="color: var(--text)">advanced RAG notes</span><span class="blog-tag">notes</span></li>
   </ul>
+</section>
 
-  <hr>
-  <h2 id="contact">contact</h2>
-  <p>feel free to reach out to me via <a href="https://x.com/samyak1729">twitter</a>, <a href="https://www.linkedin.com/in/samyak-bharsakle-15ba88292">linkedin</a>, or email me at <a href="mailto:samyak5jan@gmail.com">samyak5jan@gmail.com</a>.</p>
+<!-- ══ PODCAST / SPONSOR ══ -->
+<section>
+  <div class="section-label">// the podcast</div>
+  <h2>deeptech podcast 🎙️</h2>
 
-  <hr>
-  <h2 id="fund">fund my thinkpad</h2>
-  <p>if you have found my blogs or tweets helpful you can fund my thinkpad</p>
-  <p><a href="https://paypal.me/SamyakBharsakle?country.x=IN&locale.x=en_GB">paypal.me/SamyakBharsakle</a></p>
+  <p>
+    conversations with founders, researchers, and engineers building in frontier tech — aerospace, biotech, AI infrastructure, and more. helping create useful content for the upcoming generation of deeptech founders.
+  </p>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-    }
-  </script>
+  <div class="sponsor-box">
+    <h3>sponsor the podcast</h3>
+    <p>reach technical founders, engineers, and builders who care about deep technology.</p>
+    <ul>
+      <li>audience of technical builders and deeptech enthusiasts</li>
+      <li>organic integration — no scripted ad reads</li>
+      <li>cross-promotion across blog, social, and newsletter</li>
+      <li>perfect for devtools, cloud, AI, and infra companies</li>
+    </ul>
+    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">let's talk sponsorship →</a>
+  </div>
+</section>
+
+<!-- ══ LET'S TALK ══ -->
+<section>
+  <div class="section-label">// let's connect</div>
+  <h2>interested?</h2>
+
+  <p>
+    whether you're hiring for devrel, want to sponsor the podcast, or just want to talk about AI agents and devtools — i'm always down for a conversation.
+  </p>
+
+  <div class="cta-row" style="margin-top: 1.25rem;">
+    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">📞 book a 30-min call</a>
+    <a href="mailto:samyak5jan@gmail.com" class="btn btn-secondary">✉️ email me</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>samyak bharsakle · 2025</p>
+  <div>
+    <a href="https://github.com/samyak1729" target="_blank">github</a> ·
+    <a href="https://x.com/samyak1729" target="_blank">twitter</a> ·
+    <a href="https://www.linkedin.com/in/samyak-bharsakle-15ba88292" target="_blank">linkedin</a>
+  </div>
+</footer>
+
+</div><!-- /wrapper -->
+
 </body>
 </html>
