@@ -1,666 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samyak Bharsakle — DevRel · Builder · Podcast Host</title>
-<meta name="description" content="Samyak Bharsakle — aspiring DevRel, deeptech podcast host, AI tinkerer, and community builder. Let's talk."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samyak Bharsakle</title>
+<meta name="description" content="Growth and content marketer for AI and robotics companies. Bangalore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F9F9F7;
-    --surface: #F0EDE6;
-    --border: #E0DDD5;
-    --accent: #1A1A1A;
-    --text: #1A1A1A;
-    --text2: #292929;
-    --muted: #757575;
-    --link: #3D3D3D;
-    --link-hover: #000;
-    --radius: 10px;
-  }
+  :root { --bg: #f2f0ed; --ink: #111; --mute: #9a9894; --line: #dcd9d4; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font: 17px/1.55 "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+  a:hover { text-decoration-color: var(--ink); }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  .hero { position: relative; min-height: 100vh; padding: 72px 6vw; display: flex; flex-direction: column; justify-content: flex-end; gap: 28px; padding-bottom: 14vh; overflow: hidden; }
+  #ascii { position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); margin: 0; font: 11px/11px "JetBrains Mono", ui-monospace, monospace; color: #8a8782; white-space: pre; pointer-events: none; user-select: none; }
+  h1 { position: relative; z-index: 1; font-weight: 400; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.06; letter-spacing: -0.03em; margin: 0; max-width: 12ch; }
+  h1 .g { color: var(--mute); }
+  .lede { position: relative; z-index: 1; max-width: 440px; }
+  .lede p { margin: 0 0 24px; font-size: 18px; }
+  .btn { display: inline-flex; align-items: center; gap: 14px; padding: 6px 18px 6px 6px; background: #fff; border-radius: 14px; text-decoration: none; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .btn i { width: 40px; height: 40px; border-radius: 10px; background: #111; display: grid; place-items: center; color: #fff; font: 10px/1 "JetBrains Mono", monospace; font-style: normal; letter-spacing: 1px; }
 
-  body {
-    background: var(--bg);
-    color: var(--text2);
-    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    font-size: 17px;
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: var(--link); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; transition: color 0.2s, text-decoration-color 0.2s; }
-  a:hover { color: var(--link-hover); text-decoration-color: var(--text); }
-
-  .wrapper {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  /* ── CTA Banner ── */
-  .top-banner {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0.65rem 1.5rem;
-    text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .top-banner a {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* ── Hero ── */
-  .hero {
-    padding: 6rem 0 3.5rem;
-  }
-
-  .hero-eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-intro {
-    font-size: 1.05rem;
-    color: var(--text2);
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-intro strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  .cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0.65rem 1.4rem;
-    border-radius: 6px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .btn-primary {
-    background: var(--text);
-    color: var(--bg);
-  }
-
-  .btn-primary:hover {
-    background: #333;
-    color: #fff;
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text2);
-    border: 1px solid var(--border);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--text);
-    color: var(--text);
-  }
-
-  .social-row {
-    display: flex;
-    gap: 1.5rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--muted);
-  }
-
-  .social-row a {
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .social-row a:hover {
-    color: var(--text);
-  }
-
-  /* ── Dividers ── */
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
-  }
-
-  /* ── Section ── */
-  section {
-    padding: 3rem 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
-
-  /* ── Story section ── */
-  .story p {
-    margin-bottom: 1.1rem;
-  }
-
-  .story .highlight-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.75rem;
-    margin: 1.75rem 0;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--text2);
-  }
-
-  .story .highlight-box strong {
-    color: var(--text);
-    font-style: normal;
-  }
-
-  /* ── Card grid ── */
-  .card-grid {
-    display: grid;
-    gap: 0.6rem;
-  }
-
-  .card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.15rem 1.4rem;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .card:hover {
-    border-color: #aaa;
-    background: var(--surface);
-  }
-
-  .card-title {
-    font-weight: 600;
-    color: var(--text);
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .card-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-
-  .tag {
-    display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 7px;
-    color: var(--muted);
-  }
-
-  /* ── Blog list ── */
-  .blog-list {
-    list-style: none;
-  }
-
-  .blog-list li {
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .blog-list li:last-child {
-    border-bottom: none;
-  }
-
-  .blog-list a, .blog-list span {
-    font-weight: 500;
-    color: var(--text);
-    font-size: 0.92rem;
-    text-decoration: none;
-  }
-
-  .blog-list a:hover {
-    text-decoration: underline;
-    text-decoration-color: var(--text);
-  }
-
-  .blog-list .blog-tag {
-    font-size: 0.7rem;
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-
-  /* ── Podcast / Sponsor box ── */
-  .sponsor-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    margin-top: 1.25rem;
-  }
-
-  .sponsor-box h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-  }
-
-  .sponsor-box p {
-    font-size: 0.92rem;
-    color: var(--text2);
-    margin-bottom: 1rem;
-  }
-
-  .sponsor-box ul {
-    list-style: none;
-    margin-bottom: 1.25rem;
-  }
-
-  .sponsor-box li {
-    font-size: 0.88rem;
-    color: var(--text2);
-    padding: 0.3rem 0;
-    padding-left: 1.25rem;
-    position: relative;
-  }
-
-  .sponsor-box li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
-
-  /* ── Why DevRel ── */
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.6rem;
-    margin-top: 0.5rem;
-  }
-
-  .why-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.15rem 1.25rem;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .why-item:hover {
-    border-color: #aaa;
-    background: var(--surface);
-  }
-
-  .why-item .emoji {
-    font-size: 1.2rem;
-    margin-bottom: 0.45rem;
-  }
-
-  .why-item .why-title {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--text);
-    margin-bottom: 0.2rem;
-  }
-
-  .why-item .why-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-
-  /* ── Footer ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  footer p {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-  }
-
-  footer a {
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    text-decoration: none;
-  }
-
-  footer a:hover { color: var(--text); }
-
-  /* ── Animations ── */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero, section {
-    animation: fadeIn 0.5s ease both;
-  }
-
-  /* ── Mobile ── */
-  @media (max-width: 640px) {
-    .wrapper { padding: 0 1.25rem; }
-    .hero { padding-top: 4rem; }
-    .cta-row { flex-direction: column; }
-    .btn { justify-content: center; }
-    .blog-list li { flex-direction: column; gap: 0.15rem; }
+  main { padding: 40px 6vw 100px; max-width: 760px; }
+  section { border-top: 1px solid var(--line); padding: 28px 0 8px; display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
+  h2 { font-size: 13px; font-weight: 400; color: var(--mute); margin: 4px 0 0; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0 0 14px; padding-left: 18px; position: relative; }
+  li::before { content: "+"; position: absolute; left: 0; color: var(--mute); font-family: "JetBrains Mono", monospace; font-size: 13px; top: 2px; }
+  .d { color: var(--mute); font-size: 14px; margin-left: 6px; }
+  .quotes { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+  .quotes img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
+  @media (max-width: 720px) {
+    section { grid-template-columns: 1fr; gap: 10px; }
+    #ascii { opacity: .45; right: -30vw; }
   }
 </style>
 </head>
 <body>
 
-<div class="top-banner">
-  actively looking for devrel roles — <a href="https://cal.com/samyakb/30min">let's chat →</a>
+<div class="hero">
+  <pre id="ascii" aria-hidden="true"></pre>
+  <h1>Growth/Marketing for <span class="g">Robotics and AI.</span></h1>
+  <div class="lede">
+    <p>Hi, I'm Samyak. I'm a growth and content marketer working mainly with AI and robotics companies, using long-form technical writing to get them in front of the right people across socials.</p>
+    <a class="btn" href="https://cal.com/samyakb/30min"><i>::+</i>Book a call</a>
+  </div>
 </div>
 
-<div class="wrapper">
-
-<!-- ══ HERO ══ -->
-<header class="hero">
-  <div class="hero-eyebrow">Open to Opportunities</div>
-
-  <h1>Hey, I'm Samyak 👋</h1>
-
-  <p class="hero-intro">
-    I love <strong>devtools, applied AI, and communities</strong>.
-    I'm looking for a <strong>devrel role</strong> where I can build in public, write technical content, and help developers win. I don't have all the answers — but I've got the curiosity, the hustle, and the fundamentals.
-  </p>
-
-  <div class="cta-row">
-    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">Book a Call</a>
-    <a href="https://github.com/samyak1729" class="btn btn-secondary" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/samyak-bharsakle-15ba88292" class="btn btn-secondary" target="_blank">LinkedIn</a>
-  </div>
-
-  <div class="social-row">
-    <a href="https://x.com/samyak1729" target="_blank">Twitter / X</a>
-    <a href="mailto:samyak5jan@gmail.com">samyak5jan@gmail.com</a>
-  </div>
-</header>
-
-<!-- ══ MY STORY ══ -->
-<section class="story">
-  <div class="section-label">The Honest Version</div>
-  <h2>Why DevRel?</h2>
-
-  <p>
-    In college I led and was part of multiple technical clubs. I tried to start a biotech research lab — failed miserably. Tried running an AI agency — realized it wasn't for me. Started a deeptech podcast to talk to founders building the future.
-  </p>
-
-  <p>
-    Along the way I kept doing the same things: writing technical blogs, building projects to understand how things work, creating resources for other developers, and getting people excited about technical ideas.
-  </p>
-
-  <div class="highlight-box">
-    Looking back… <strong>isn't this what a DevRel does?</strong><br/>
-    I've got a lot to learn, but I think the fundamentals are right.
-  </div>
-
-  <p>
-    If you're looking for a DevRel — or even if you aren't — I might be a good fit. Let's talk.
-  </p>
-</section>
-
-<!-- ══ WHAT I BRING ══ -->
-<section>
-  <div class="section-label">What I Bring</div>
-  <h2>The DevRel Toolkit</h2>
-
-  <div class="why-grid">
-    <div class="why-item">
-      <div class="emoji">✍️</div>
-      <div class="why-title">Technical Writing</div>
-      <div class="why-desc">Blog series on RAG, AI agents, deep research — breaking down complex topics for developers</div>
-    </div>
-    <div class="why-item">
-      <div class="emoji">🎙️</div>
-      <div class="why-title">Podcast & Content</div>
-      <div class="why-desc">Hosting a deeptech podcast, creating content for the next generation of founders</div>
-    </div>
-    <div class="why-item">
-      <div class="emoji">🛠️</div>
-      <div class="why-title">Building Things</div>
-      <div class="why-desc">RAG agents, deep research tools, SQL agents — learning by building from scratch</div>
-    </div>
-    <div class="why-item">
-      <div class="emoji">👥</div>
-      <div class="why-title">Community</div>
-      <div class="why-desc">Led multiple college tech clubs, love bringing developers together around ideas</div>
-    </div>
-    <div class="why-item">
-      <div class="emoji">📦</div>
-      <div class="why-title">Open Source</div>
-      <div class="why-desc">Contributed to ChonkieAI, Mirascope. Exploring OpenTelemetry for Python</div>
-    </div>
-    <div class="why-item">
-      <div class="emoji">🧠</div>
-      <div class="why-title">Always Learning</div>
-      <div class="why-desc">I don't pretend to know it all — I learn in public and share what I find</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROJECTS ══ -->
-<section>
-  <div class="section-label">Things I've Built</div>
-  <h2>Projects</h2>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-title">🔬 Deep Research Agent <span class="tag">AI</span></div>
-      <div class="card-desc">Automated deep research pipeline using LLMs</div>
-    </div>
-    <div class="card">
-      <div class="card-title">📚 RAG Agent <span class="tag">RAG</span></div>
-      <div class="card-desc">Retrieval-augmented generation from scratch</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🗃️ SQL Agent <span class="tag">AI</span></div>
-      <div class="card-desc">Natural language to SQL query agent</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🧑‍💼 Founder RAG <span class="tag">RAG</span></div>
-      <div class="card-desc">RAG system tailored for founder knowledge bases</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🏢 Enterprise Documentation RAG <span class="tag">RAG</span></div>
-      <div class="card-desc">Production-style RAG for enterprise docs</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🔀 Git from Scratch <span class="tag">Python</span></div>
-      <div class="card-desc">Reimplemented git internals in Python to understand how it works</div>
-    </div>
-    <div class="card">
-      <div class="card-title">📰 AI Content Curation <span class="tag">Vibecoded</span></div>
-      <div class="card-desc">AI-powered content curation tool</div>
-    </div>
-  </div>
-
-  <h3 style="font-size: 0.95rem; color: var(--muted); margin-top: 1.75rem; margin-bottom: 0.75rem; font-weight: 500; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;">Mini Projects</h3>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-title">📦 Inventory Management System <span class="tag">FastAPI</span></div>
-      <div class="card-desc">Backend system built with FastAPI</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🌐 Frontend Projects <span class="tag">Web</span></div>
-      <div class="card-desc">Multiple frontend builds from freshman year</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ GITHUB RESOURCES ══ -->
-<section>
-  <div class="section-label">Learning Resources</div>
-  <h2>GitHub Resources</h2>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-title">🧬 GenAI from First Principles</div>
-      <div class="card-desc">A resource for learning generative AI fundamentals from the ground up</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🔧 Backend from Scratch</div>
-      <div class="card-desc">Learning backend development by building everything from scratch</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ BLOGS ══ -->
-<section>
-  <div class="section-label">Writing</div>
-  <h2>Blogs &amp; Technical Writing</h2>
-
-  <ul class="blog-list">
-    <li>
-      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-1-Building-Ingestion-and-Chunking-from-Scratch-1bfd0f70812080dc9063f9ba51d70df9" target="_blank">RAG from Scratch — Part 1: Ingestion &amp; Chunking</a>
-      <span class="blog-tag">Series</span>
-    </li>
-    <li>
-      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-2-Adding-Embeddings-and-a-Vector-Store-with-Cohere-and-Pinecone-1d2d0f70812080f09258e1cf78e335f2" target="_blank">RAG from Scratch — Part 2: Embeddings + Vector Store</a>
-      <span class="blog-tag">Series</span>
-    </li>
-    <li>
-      <a href="https://www.notion.so/samyak-b/RAG-for-Beginners-Part-3-Adding-an-LLM-with-Gemini-2-0-Flash-1d2d0f70812080e5b199f79fa16bb712" target="_blank">RAG from Scratch — Part 3: Querying with Gemini</a>
-      <span class="blog-tag">Series</span>
-    </li>
-    <li><span style="color: var(--text)">Asha AI Blog Series</span><span class="blog-tag">Series</span></li>
-    <li><span style="color: var(--text)">Deep Research — How It Works</span><span class="blog-tag">AI</span></li>
-    <li><span style="color: var(--text)">List Mutation in Python</span><span class="blog-tag">Fundamentals</span></li>
-    <li><span style="color: var(--text)">uv Package Manager</span><span class="blog-tag">Fundamentals</span></li>
-    <li><span style="color: var(--text)">Reading Open Source Codebases</span><span class="blog-tag">Fundamentals</span></li>
-    <li><span style="color: var(--text)">Firecrawl: LLM-Ready Data</span><span class="blog-tag">Tools</span></li>
-    <li><span style="color: var(--text)">n8n Workflow Automation</span><span class="blog-tag">Tools</span></li>
-    <li><span style="color: var(--text)">Advanced RAG Notes</span><span class="blog-tag">Notes</span></li>
-  </ul>
-</section>
-
-<!-- ══ PODCAST / SPONSOR ══ -->
-<section>
-  <div class="section-label">The Podcast</div>
-  <h2>Deeptech Podcast 🎙️</h2>
-
-  <p>
-    Conversations with founders, researchers, and engineers building in frontier tech — aerospace, biotech, AI infrastructure, and more. Helping create useful content for the upcoming generation of deeptech founders.
-  </p>
-
-  <div class="sponsor-box">
-    <h3>Sponsor the Podcast</h3>
-    <p>Reach technical founders, engineers, and builders who care about deep technology.</p>
+<main>
+  <section>
+    <h2>Work</h2>
     <ul>
-      <li>Audience of technical builders and deeptech enthusiasts</li>
-      <li>Organic integration — no scripted ad reads</li>
-      <li>Cross-promotion across blog, social, and newsletter</li>
-      <li>Perfect for devtools, cloud, AI, and infra companies</li>
+      <li>Led growth at <a href="https://quarq.io">Quarq Labs</a>. Our open-source launch reached 145k views and was shared by LangChain's co-founder, six articles drew 256k views, and <a href="https://x.com/quarqlabs">@quarqlabs</a> grew from 100 to 1,000 followers in six weeks.</li>
+      <li>Worked on brand, design and positioning directly with Quarq's CEO.</li>
+      <li>Wrote about robotics and simulation for an NVIDIA Inception startup and an SPC-backed startup.</li>
+      <li>Currently helping <a href="https://interlatent.com">Interlatent</a> (W27) with GTM.</li>
+      <li>Host <a href="https://www.youtube.com/@escvelocitypod">Escape Velocity</a>, a weekly podcast with India's deep-tech founders.</li>
     </ul>
-    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">Let's Talk Sponsorship →</a>
-  </div>
-</section>
+  </section>
 
-<!-- ══ LET'S TALK ══ -->
-<section>
-  <div class="section-label">Let's Connect</div>
-  <h2>Interested?</h2>
+  <section>
+    <h2>Writing</h2>
+    <ul>
+      <li><a href="https://x.com/quarqlabs/status/2061571757488972153">98.2% on LongMemEval: An Open-Source Agent That Actually Remembers</a><span class="d">Jun 2026</span></li>
+      <li><a href="https://x.com/Rigyd3d/status/2105395339805208744">World Models and the Thesis of Simulation 2.0</a><span class="d">Sep 2026</span></li>
+      <li><a href="https://x.com/Rigyd3d/status/2101741469560455533">Robotics and Simulation-Ready Assets</a><span class="d">Sep 2026</span></li>
+      <li><a href="https://x.com/quarqlabs/status/2064405734981505465">The Map of Robot Learning</a><span class="d">Jun 2026</span></li>
+      <li><a href="https://x.com/quarqlabs/status/2062962469409321234">The Tooling Gap in Robot Learning</a><span class="d">Jun 2026</span></li>
+      <li><a href="https://samyak1729.github.io/hermes-blog/">Understanding Hermes from an Agentic Memory Perspective</a><span class="d">Apr 2026</span></li>
+      <li><a href="https://x.com/quarqlabs/status/2048802002877251600">Exploring GEPA</a><span class="d">Apr 2026</span></li>
+    </ul>
+  </section>
 
-  <p>
-    Whether you're hiring for DevRel, want to sponsor the podcast, or just want to talk about AI agents and devtools — I'm always down for a conversation.
-  </p>
+  <section>
+    <h2>Building</h2>
+    <ul>
+      <li>Docs and tests for <a href="https://github.com/open-telemetry/opentelemetry-python/pull/5024">OpenTelemetry</a>, <a href="https://github.com/Mirascope/mirascope/pull/2529">Mirascope</a> and <a href="https://github.com/chonkie-inc/chonkie/pull/451">Chonkie</a></li>
+      <li><a href="https://github.com/samyak1729/deep-research-full-stack">Deep research agent</a></li>
+      <li><a href="https://github.com/samyak1729/genai-course">GenAI from First Principles</a></li>
+    </ul>
+  </section>
 
-  <div class="cta-row" style="margin-top: 1.5rem;">
-    <a href="https://cal.com/samyakb/30min" class="btn btn-primary" target="_blank">Book a 30-min Call</a>
-    <a href="mailto:samyak5jan@gmail.com" class="btn btn-secondary">Email Me</a>
-  </div>
-</section>
+  <section>
+    <h2>Testimonials</h2>
+    <div class="quotes">
+      <a href="lain-endorse.png"><img src="lain-endorse.png" alt="Testimonial" loading="lazy"></a>
+      <a href="lain-endorse2.png"><img src="lain-endorse2.png" alt="Testimonial" loading="lazy"></a>
+      <a href="dandelion-endorse.png"><img src="dandelion-endorse.png" alt="Testimonial" loading="lazy"></a>
+    </div>
+  </section>
 
-<!-- ══ FOOTER ══ -->
-<footer>
-  <p>Samyak Bharsakle · 2025</p>
-  <div>
-    <a href="https://github.com/samyak1729" target="_blank">GitHub</a> ·
-    <a href="https://x.com/samyak1729" target="_blank">Twitter</a> ·
-    <a href="https://www.linkedin.com/in/samyak-bharsakle-15ba88292" target="_blank">LinkedIn</a>
-  </div>
-</footer>
+  <section>
+    <h2>Contact</h2>
+    <ul>
+      <li><a href="https://cal.com/samyakb/30min">Book a call</a> · <a href="https://twitter.com/smykx">X</a> · <a href="https://www.linkedin.com/in/samyak-bharsakle/">LinkedIn</a> · <a href="https://github.com/samyak1729">GitHub</a> · <a href="https://drive.google.com/file/d/1va6lI2qhdgwgDphuPP6lAplboUXgLrAL/view">Resume</a></li>
+    </ul>
+  </section>
+</main>
 
-</div><!-- /wrapper -->
+<script>
+(function () {
+  const el = document.getElementById('ascii');
+  const ramp = " .·:-+*#%▒▓";
+  let cols, rows;
+  function size() {
+    cols = Math.min(110, Math.floor(window.innerWidth * 0.62 / 6.6));
+    rows = Math.floor(window.innerHeight * 0.82 / 11);
+  }
+  size(); addEventListener('resize', size);
 
+  // smooth value noise
+  const P = new Uint8Array(512); for (let i = 0; i < 256; i++) P[i] = P[i + 256] = (Math.random() * 256) | 0;
+  const f = t => t * t * (3 - 2 * t);
+  function n2(x, y) {
+    const xi = Math.floor(x) & 255, yi = Math.floor(y) & 255, xf = x - Math.floor(x), yf = y - Math.floor(y);
+    const a = P[P[xi] + yi] / 255, b = P[P[xi + 1] + yi] / 255, c = P[P[xi] + yi + 1] / 255, d = P[P[xi + 1] + yi + 1] / 255;
+    const u = f(xf), v = f(yf);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  const fbm = (x, y) => n2(x, y) * .55 + n2(x * 2.1, y * 2.1) * .3 + n2(x * 4.3, y * 4.3) * .15;
+
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0, last = 0;
+  function frame(now) {
+    if (now - last > 70) {
+      last = now; t += 0.018;
+      let out = "";
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const nx = x / cols, ny = y / rows;
+          // fade toward left edge and borders so it reads as a drifting mass
+          const mask = Math.min(1, nx * 1.6) * Math.sin(ny * Math.PI);
+          let v = fbm(x * 0.06 + t, y * 0.11 - t * 0.6) * mask;
+          v = (v - 0.28) * 2.2;
+          if (v <= 0) { out += (Math.random() < 0.012 * mask) ? "·" : " "; continue; }
+          out += ramp[Math.min(ramp.length - 1, (v * ramp.length) | 0)];
+        }
+        out += "\n";
+      }
+      el.textContent = out;
+    }
+    if (!still) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
